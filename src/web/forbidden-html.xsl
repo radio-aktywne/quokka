@@ -13,14 +13,8 @@
       </head>
       <body>
         <main role="main">
-          <xsl:for-each select="/report/incident">
-            <section>
-              <h1>Error</h1>
-              <p>
-                <xsl:value-of select="state/text" />
-              </p>
-            </section>
-          </xsl:for-each>
+          <h1>Error</h1>
+          <p>Forbidden</p>
         </main>
       </body>
     </html>

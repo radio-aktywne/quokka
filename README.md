@@ -2,7 +2,7 @@
 
 <div align="center">
 
-Broadcast Icecast transmitting ❄️
+Broadcast Icecast transmitting service ❄️
 
 [![Lint](https://github.com/radio-aktywne/quokka/actions/workflows/lint.yaml/badge.svg)](https://github.com/radio-aktywne/quokka/actions/workflows/lint.yaml)
 [![Image](https://github.com/radio-aktywne/quokka/actions/workflows/image.yaml/badge.svg)](https://github.com/radio-aktywne/quokka/actions/workflows/image.yaml)
