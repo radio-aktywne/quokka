@@ -3,6 +3,18 @@ slug: /usage
 title: Usage
 ---
 
+## Ping
+
+You can check the status of the service
+by sending a `GET` request to the `/ping` endpoint.
+The service should respond with a `200 OK` status code.
+
+For example, you can use `curl` to do that:
+
+```sh
+curl --request GET http://localhost:10000/ping
+```
+
 ## Mounting sources
 
 To mount a source you need to use a client that can communicate with [`Icecast`](https://icecast.org).
@@ -39,16 +51,16 @@ and making sure all of them get the live audio.
 
 There are various endpoints with internal insights and statistics:
 
-- `/admin/listclients.json?mount=/radio.mp3` -
+- `/admin/listclients?mount=/radio.mp3` -
   list clients listening to `/radio.mp3`
-- `/admin/stats.json` -
-  various statistics
-- `/admin/publicstats.json` -
-  subset of statistics that are safe to expose to the public
-- `/admin/listmounts.json` -
+- `/admin/listmounts` -
   list all active mount points
-- `/admin/streamlist.json` -
+- `/admin/stats` -
+  various statistics
+- `/admin/streamlist` -
   list all active streams
+- `/admin/publicstats` -
+  subset of statistics that are safe to expose to the public
 
 All of them return data in JSON format.
 You need to authenticate with basic auth to access them.

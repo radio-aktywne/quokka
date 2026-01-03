@@ -1,20 +1,23 @@
-# See: https://github.com/NixOS/nixpkgs/blob/d680ded26da5cf104dd2735a51e88d2d8f487b4d/pkgs/servers/icecast/default.nix
+# See: https://github.com/NixOS/nixpkgs/blob/47d1011a3e497119111a2e25a6c043dce3e41e45/pkgs/by-name/ic/icecast/package.nix
 {
-  stdenv,
-  fetchurl,
-  pkg-config,
-  libxml2,
-  libxslt,
   curl,
-  libvorbis,
-  libtheora,
-  speex,
+  fetchurl,
   libkate,
   libopus,
+  libtheora,
+  libvorbis,
+  libxml2,
+  libxslt,
+  pkg-config,
+  pkgs,
+  rhash,
+  speex,
+  stdenv,
 }: let
+  libigloo = pkgs.callPackage ./libigloo.nix {};
   pname = "icecast";
-  version = "2.5-beta3";
-  sha256 = "sha256-4FDokoA9zBDYj8RAO/kuTHaZ6jZYBLSJZiX/IYFaCW8=";
+  version = "2.5.0";
+  sha256 = "sha256-2aoHx0Ka7BnZUP9v1CXDcfdxWM00/yIPwZGywYbGfHo=";
 in
   stdenv.mkDerivation {
     inherit pname version;
@@ -22,19 +25,21 @@ in
     src = fetchurl {
       inherit sha256;
 
-      url = "http://downloads.xiph.org/releases/${pname}/${pname}-${version}.tar.gz";
+      url = "http://downloads.xiph.org/releases/icecast/icecast-${version}.tar.gz";
     };
 
     buildInputs = [
-      pkg-config
-      libxml2
-      libxslt
       curl
-      libvorbis
-      libtheora
-      speex
+      libigloo
       libkate
       libopus
+      libtheora
+      libvorbis
+      libxml2
+      libxslt
+      pkg-config
+      rhash
+      speex
     ];
 
     hardeningEnable = ["pie"];

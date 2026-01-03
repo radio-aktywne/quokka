@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-24.11";
+      url = "github:NixOS/nixpkgs/nixos-25.05";
     };
 
     flake-parts = {
@@ -35,15 +35,16 @@
         system,
         ...
       }: let
+        nix = pkgs.nix;
         node = pkgs.nodejs;
         nil = pkgs.nil;
         task = pkgs.go-task;
         coreutils = pkgs.coreutils;
         trunk = pkgs.trunk-io;
-        copier = pkgs.copier;
+        copier = pkgs.python313.withPackages (ps: [ps.copier]);
         # Build icecast manually to use the latest version
         icecast = pkgs.callPackage ./icecast.nix {};
-        envsubst = pkgs.envsubst;
+        gomplate = pkgs.gomplate;
         liquidsoap = pkgs.liquidsoap;
         tini = pkgs.tini;
         su-exec = pkgs.su-exec;
@@ -70,6 +71,7 @@
             name = "dev";
 
             packages = [
+              nix
               node
               nil
               task
@@ -77,7 +79,7 @@
               trunk
               copier
               icecast
-              envsubst
+              gomplate
               liquidsoap
             ];
 
@@ -91,23 +93,9 @@
 
             packages = [
               icecast
-              envsubst
+              gomplate
               tini
               su-exec
-            ];
-
-            shellHook = ''
-              export TMPDIR=/tmp
-            '';
-          };
-
-          template = pkgs.mkShell {
-            name = "template";
-
-            packages = [
-              task
-              coreutils
-              copier
             ];
 
             shellHook = ''
@@ -119,6 +107,7 @@
             name = "lint";
 
             packages = [
+              nix
               node
               task
               coreutils

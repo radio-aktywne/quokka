@@ -1,6 +1,13 @@
 plugins:
-  # Enable XML plugin
+  # Enable XML formatting plugin
   - "@prettier/plugin-xml"
+  # Enable JSON sorting plugin
+  - prettier-plugin-sort-json
+  # Enable package.json sorting plugin
+  - prettier-plugin-packagejson
 
-# Format whitespaces
-xmlWhitespaceSensitivity: preserve
+# Sort JSON recursively
+jsonRecursiveSort: true
+
+# Format whitespaces in XML
+xmlWhitespaceSensitivity: ignore

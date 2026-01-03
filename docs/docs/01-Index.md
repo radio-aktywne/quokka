@@ -5,7 +5,7 @@ title: Index
 
 # quokka
 
-Broadcast Icecast transmitting ❄️
+Broadcast Icecast transmitting service ❄️
 
 ## 💡 About
 
