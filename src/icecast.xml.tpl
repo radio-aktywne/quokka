@@ -11,10 +11,10 @@
 
   <logging>
     <!-- Log access to stdout -->
-    <accesslog>stdout</accesslog>
+    <accesslog>-</accesslog>
 
-    <!-- Log errors to stderr -->
-    <errorlog>stderr</errorlog>
+    <!-- Log errors to stdout -->
+    <errorlog>-</errorlog>
 
     <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
     <loglevel>3</loglevel>
@@ -27,8 +27,6 @@
   </mount>
 
   <paths>
-    <logdir>/dev/</logdir>
-
     <adminroot>src/admin/</adminroot>
     <webroot>src/web/</webroot>
 
