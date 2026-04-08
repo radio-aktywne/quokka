@@ -24,25 +24,26 @@ For example, you can use [`Liquidsoap`](https://www.liquidsoap.info) for that:
 ```sh
 liquidsoap \
     'output.icecast(
+        format="audio/ogg",
         host="localhost",
+        mount="stream.opus",
+        password="password",
         port=10000,
         user="source",
-        password="password",
-        mount="radio.mp3",
-        %mp3,
+        %opus,
         sine()
     )'
 ```
 
 Now you should hear a sine wave at
-[`http://localhost:10000/radio.mp3`](http://localhost:10000/radio.mp3).
+[`http://localhost:10000/stream.opus`](http://localhost:10000/stream.opus).
 
 ## Listening
 
 You can listen to any active mount point.
-If a mount point is called `radio.mp3`
+If a mount point is called `stream.opus`
 then you can reach the stream at
-[`http://localhost:10000/radio.mp3`](http://localhost:10000/radio.mp3).
+[`http://localhost:10000/stream.opus`](http://localhost:10000/stream.opus).
 
 `Icecast` is responsible for handling as many listeners as possible
 and making sure all of them get the live audio.
@@ -51,8 +52,8 @@ and making sure all of them get the live audio.
 
 There are various endpoints with internal insights and statistics:
 
-- `/admin/listclients.json?mount=/radio.mp3` -
-  list clients listening to `/radio.mp3`
+- `/admin/listclients.json?mount=/stream.opus` -
+  list clients listening to `/stream.opus`
 - `/admin/listmounts.json` -
   list all active mount points
 - `/admin/stats.json` -
