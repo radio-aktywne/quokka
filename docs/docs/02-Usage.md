@@ -30,8 +30,18 @@ liquidsoap \
         password="password",
         port=10000,
         user="source",
-        %opus,
-        sine()
+        %ffmpeg(
+            format="ogg",
+            %audio(
+                b="256k",
+                codec="libopus",
+                samplerate=48000
+            )
+        ),
+        metadata.map(
+            fun (_) -> [("title", "test")],
+            sine()
+        )
     )'
 ```
 
