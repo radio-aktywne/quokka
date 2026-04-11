@@ -19,6 +19,12 @@ You can configure the service at runtime using various environment variables:
 - `QUOKKA__CREDENTIALS__SOURCE__USER` -
   username for the source user
   (default: `source`)
+- `QUOKKA__LIMITS__CLIENTS` -
+  maximum number of clients that can be connected at the same time
+  (default: `100`)
+- `QUOKKA__LIMITS__SOURCES` -
+  maximum number of sources that can be connected at the same time
+  (default: `10`)
 - `QUOKKA__SERVER__HOST` -
   host to run the server on
   (default: `0.0.0.0`)

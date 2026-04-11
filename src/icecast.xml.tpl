@@ -4,6 +4,11 @@
     <admin-user>{{ ( ds "config" ).credentials.admin.user }}</admin-user>
   </authentication>
 
+  <limits>
+    <clients>{{ ( ds "config" ).limits.clients }}</clients>
+    <sources>{{ ( ds "config" ).limits.sources }}</sources>
+  </limits>
+
   <listen-socket>
     <bind-address>{{ ( ds "config" ).server.host }}</bind-address>
     <port>{{ ( ds "config" ).server.port }}</port>
