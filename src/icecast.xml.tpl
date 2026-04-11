@@ -22,10 +22,10 @@
   </listen-socket>
 
   <logging>
-    <!-- Log access to stdout -->
+    <!-- Log access to stderr -->
     <accesslog>-</accesslog>
 
-    <!-- Log errors to stdout -->
+    <!-- Log errors to stderr -->
     <errorlog>-</errorlog>
 
     <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
@@ -40,8 +40,13 @@
 
   <paths>
     <adminroot>src/admin/</adminroot>
+    <mime-types>src/mime.types</mime-types>
     <webroot>src/web/</webroot>
 
+    <!-- We are logging to stderr, so no files should be created here, but Icecast complains if this is missing -->
+    <logdir>./</logdir>
+
+    <!-- Block access to some paths by aliasing them to other paths that return error responses -->
     <alias source="/admin/" destination="/forbidden-xml.xsl"/>
     <alias source="/admin/admin.cgi" destination="/forbidden-html.xsl"/>
     <alias source="/admin/dashboard" destination="/forbidden-xml.xsl"/>
@@ -84,10 +89,17 @@
     <alias source="/admin/response.xsl" destination="/forbidden-html.xsl"/>
     <alias source="/admin/updatemetadata.xsl" destination="/forbidden-html.xsl"/>
     <alias source="/admin/version.xsl" destination="/forbidden-html.xsl"/>
+
+    <!-- Alias some paths to other paths -->
     <alias source="/ping" destination="/ping.xsl"/>
   </paths>
 
   <security>
     <prng-seed type="profile">linux</prng-seed>
   </security>
+
+  <!-- The values below are not important, but Icecast complains if they are missing -->
+  <hostname>example.com</hostname>
+  <location>Example</location>
+  <admin>admin@example.com</admin>
 </icecast>
