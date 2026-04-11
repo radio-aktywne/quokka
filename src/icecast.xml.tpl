@@ -4,6 +4,13 @@
     <admin-user>{{ ( ds "config" ).credentials.admin.user }}</admin-user>
   </authentication>
 
+  <http-headers>
+    <header name="Access-Control-Allow-Headers" type="cors" value="*" />
+    <header name="Access-Control-Allow-Methods" type="cors" value="*" />
+    <header name="Access-Control-Allow-Origin" type="cors" value="*" />
+    <header name="Access-Control-Expose-Headers" type="cors" value="*" />
+  </http-headers>
+
   <limits>
     <clients>{{ ( ds "config" ).limits.clients }}</clients>
     <sources>{{ ( ds "config" ).limits.sources }}</sources>
