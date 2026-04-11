@@ -33,7 +33,7 @@ ignoresignals() {
 starticecast() {
 	echo 'Starting Icecast...'
 
-	icecast -c "${1}" &
+	icecast -c "${1}" 2>&1 &
 }
 
 # Function to setup signal handling
